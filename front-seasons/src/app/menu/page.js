@@ -1,12 +1,15 @@
 'use client'
 import { useEffect, useState } from "react";
-import tabela from "../components/tabela";
+import Card from "../components/Card";
+
 
 export default function menubar(){
 
     return(
-        <div>
-            <tabela />
-        </div>
-    ):
+    <div className="fixed inset-0 flex justify-center items-center">
+        <Card>
+            <h1>efiuhrg</h1>
+        </Card>
+    </div>
+    );
 }

@@ -6,13 +6,18 @@ import { useEffect, useState } from "react";
 import Login from "@/app/components/login.jsx"
 
 export default function cadastroCPF(){
+  const[logCad, setLogCad] = useState(true);
 
   return(
     <div className="fixed inset-0 z-50 flex justify-center items-center">
         <div className="">
         
         </div>
-        <Login>
+        <Login
+          titulo={logCad ? 'Cadastre sua conta' : 'Acesse sua conta'}
+          titulo2={logCad ? 'Já possui uma conta' : ''}
+          titulo3={logCad ? 'Sign in' : ''}
+          botao={logCad ? 'Confirmar' : ''}>
             <h1 className="mt-3 mb-2 text-texto-forte">Nome completo</h1>
             <input type="text" id="nome" placeholder="Nome completo" className="bg-emerald-200 p-3 w-full max-w-md h-10 rounded-2xl border-1 border-texto shadow-xl hover:bg-texto focus:outline-none" required>
             </input>

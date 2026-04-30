@@ -1,9 +1,16 @@
 'use client'
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { DataForm } from "../utils/DateFormat";
+import moment from "moment";
 
-export default function Card({passagens, items, titulo}){
+export default function Card({
+  filtro,
+  colunas,
+  titulo,
+}){
   
+
 
   return(
       <div className="block shadow-sm border-b-4 bg-white border-blue-400 outline-2 outline-white backdrop-blur-sm rounded-sm w-85 h-85">
@@ -22,21 +29,26 @@ export default function Card({passagens, items, titulo}){
                 <tbody className="flex text-black ml-2">
                   <tr className="mt-1">
                     <th className="text-texto font-bold text-lg">{titulo}</th>
-                    {passagens.map((dado, index) => (
-                      <td key={index}>
-                        {items.map((id) => (
-                          <span key={id}>
-                            {dado[id]}
-                          </span>
-                        ))}
-                      </td>
-                    ))}
                   </tr>
+                  {filtro.map(() => {
+                    
+                  })}
                 </tbody>
                 <tfoot className="border-t-2 border-gray-300">
-                  <tr className="ml-2">
-                    <td className="text-black mt-1">tem que ter o valor e data de ida</td>
-                  </tr>
+                    {filtro.map((dado, index) => {
+                      if (dado.ida || dado.volta) {
+                        return (
+                          <tr key={index} className="ml-2">
+                            <td>
+                              <h1 className="text-texto text-sm">Data de referencia</h1>
+                              <span className="text-black mt-1 text-xs">
+                                {moment(dado.ida).format('DD-MM-YYYY [às] hh:mm')} até {moment(dado.volta).format('DD-MM-YYYY [às] hh:mm')}
+                              </span>
+                            </td>
+                          </tr>
+                          )
+                        } 
+                    })}
                 </tfoot>
             </table>
         </div>
